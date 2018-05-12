@@ -26,7 +26,7 @@ class MetroMain extends Component {
     }
 
     render() {
-        const { page } = this.props
+        const { page, loading } = this.props
 
         return (<View style={styles.container}>
             <Header
@@ -35,7 +35,7 @@ class MetroMain extends Component {
                     <Icon
                         name='home'
                         color='#ffffff'
-                        onPress={() => { this.goHome() }}
+                        onPress={() => { !loading && this.goHome() }}
                     />
                 }
                 outerContainerStyles={ styles.header }
@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
     const { page } = state.app
+    const { loading } = state.search
     return { page }
 }
 

@@ -7,6 +7,12 @@ import actions from '../actions'
 class MetroSearch extends Component {
     constructor(props) {
         super(props)
+        this.clearSearchCriteria = this.clearSearchCriteria.bind(this)
+    }
+
+    clearSearchCriteria() {
+        const { updateSearch } = this.props
+        updateSearch({ origin: '', destination: '', stationQuery:'' })
     }
 
     render() {
@@ -69,6 +75,11 @@ class MetroSearch extends Component {
                     </TouchableOpacity>
                     <View style={styles.buttons}>
                         <Button
+                            title='CLEAR'
+                            onPress={() => { !loading && this.clearSearchCriteria() }}
+                            buttonStyle={styles.clearButton}
+                        />
+                        <Button
                             title="SEARCH"
                             onPress={() => findShortestPath(origin, destination)}
                             buttonStyle={styles.searchButton}
@@ -115,15 +126,22 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    clearButton: {
+        width: 130,
+        height: 50,
+        backgroundColor: '#485F71',
+        margin: 5,
+        borderRadius: 30
+    },
     searchButton: {
-        width: 270,
+        width: 130,
         height: 50,
         backgroundColor: '#3799CF',
         margin: 5,
         borderRadius: 30
     },
     disabledSearchButton: {
-        width: 270,
+        width: 130,
         height: 50,
         backgroundColor: '#CBD1D7',
         margin: 5,
