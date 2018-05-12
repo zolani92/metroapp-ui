@@ -1,0 +1,45 @@
+{
+    "departureStationName": "Corentin Celton",
+    "arrivalStationName": "Pont de Neuilly",
+    "itinerary": [
+        {
+            "line": "M12",
+            "stationsNames": [
+                "Corentin Celton",
+                "Porte de Versailles",
+                "Convention",
+                "Vaugirard",
+                "Volontaires",
+                "Pasteur"
+            ]
+        },
+        {
+            "line": "M6",
+            "stationsNames": [
+                "Pasteur",
+                "Sèvres-Lecourbe",
+                "Cambronne",
+                "La Motte-Picquet-Grenelle",
+                "Dupleix",
+                "Bir-Hakeim",
+                "Passy",
+                "Trocadéro",
+                "Boissière",
+                "Kléber",
+                "Charles de Gaulle-Étoile"
+            ]
+        },
+        {
+            "line": "M1",
+            "stationsNames": [
+                "Charles de Gaulle-Étoile",
+                "Argentine",
+                "Porte Maillot",
+                "Les Sablons",
+                "Pont de Neuilly"
+            ]
+        }
+    ],
+    "stationsCount": 21,
+    "transfersCount": 2
+}
