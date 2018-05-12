@@ -25,7 +25,8 @@
       "bundleIdentifier": "com.zolani.parisMetroDijkstra"
     },
     "android": {
-      "package": "com.zolani.parisMetroDijkstra"
+      "package": "com.zolani.parisMetroDijkstra",
+      "permissions": []
     }
   }
 }
