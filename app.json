@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "metroapp-ui",
-    "description": "This project is really great.",
-    "slug": "metroapp-ui",
+    "name": "Paris metro shortest path",
+    "description": "Find shortest path between two Paris metro stations using Dijkstra's algorithm. Weight between two stations = 1 and weight of a connection = 3",
+    "slug": "metroapp",
     "privacy": "public",
     "sdkVersion": "27.0.0",
     "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/subway.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -21,7 +21,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.zolani.metroapp"
+    },
+    "android": {
+      "package": "com.zolani.metroapp"
     }
   }
 }
