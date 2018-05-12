@@ -26,7 +26,8 @@
     },
     "android": {
       "package": "com.zolani.parisMetroDijkstra",
-      "permissions": []
+      "permissions": [],
+      "versionCode": 2
     }
   }
 }
