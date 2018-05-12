@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Paris metro shortest path",
-    "description": "Find shortest path between two Paris metro stations using Dijkstra's algorithm. Weight between two stations = 1 and weight of a connection = 3",
-    "slug": "metroapp",
+    "name": "Paris Metro Dijkstra's Path",
+    "description": "Find shortest path between two Paris metro stations using Dijkstra's algorithm. Weight between two stations = 1 and weight of a connection = 3.",
+    "slug": "parisMetroDijkstra",
     "privacy": "public",
     "sdkVersion": "27.0.0",
     "platforms": ["ios", "android"],
@@ -22,10 +22,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.zolani.metroapp"
+      "bundleIdentifier": "com.zolani.parisMetroDijkstra"
     },
     "android": {
-      "package": "com.zolani.metroapp"
+      "package": "com.zolani.parisMetroDijkstra"
     }
   }
 }

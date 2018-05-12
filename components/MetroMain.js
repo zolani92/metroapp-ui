@@ -30,7 +30,7 @@ class MetroMain extends Component {
 
         return (<View style={styles.container}>
             <Header
-                centerComponent={{ text: 'Metro App', style: styles.headerText }}
+                centerComponent={{ text: 'Paris Metro Dijkstra\'s Path', style: styles.headerText }}
                 rightComponent={
                     <Icon
                         name='home'
