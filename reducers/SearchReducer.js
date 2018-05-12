@@ -2,8 +2,8 @@ import { SEARCH_UPDATE } from '../actions/types'
 import { assign } from 'lodash'
 
 const INITIAL_STATE = {
-    origin: "Pont de Neuilly",
-    destination: "Gare de Lyon",
+    origin: "",
+    destination: "",
     loading: false,
     stationsQuery: "",
     allStations: []

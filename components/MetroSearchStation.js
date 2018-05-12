@@ -8,7 +8,24 @@ class MetroSearchStation extends Component {
     constructor(props) {
         super(props)
         this.selectStation = this.selectStation.bind(this)
+        this.removeAccents = this.removeAccents.bind(this)
     }
+
+    removeAccents(strAccents) {
+		var strAccents = strAccents.split('');
+		var strAccentsOut = new Array();
+		var strAccentsLen = strAccents.length;
+		var accents = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
+		var accentsOut = "AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz";
+		for (var y = 0; y < strAccentsLen; y++) {
+			if (accents.indexOf(strAccents[y]) != -1) {
+				strAccentsOut[y] = accentsOut.substr(accents.indexOf(strAccents[y]), 1);
+			} else
+				strAccentsOut[y] = strAccents[y];
+		}
+		strAccentsOut = strAccentsOut.join('');
+		return strAccentsOut;
+	}
 
     selectStation(station) {
         const { target } = this.props
@@ -28,7 +45,9 @@ class MetroSearchStation extends Component {
             <ScrollView>
                 {
                     allStations
-                        .filter(station => station.toLowerCase().startsWith(stationQuery.toLowerCase()))
+                        .filter(station => this.removeAccents(station)
+                                            .toLowerCase()
+                                            .startsWith(this.removeAccents(stationQuery).toLowerCase()))
                         .map((station, i) => (
                             <ListItem
                                 key={i}

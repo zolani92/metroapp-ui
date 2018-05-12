@@ -1,10 +1,8 @@
 import React, { Component } from "react"
 import { StyleSheet, Text, TouchableOpacity, View, Dimensions } from "react-native"
-import { Button, Input } from "react-native-elements"
+import { Button, Input, Icon } from "react-native-elements"
 import { connect } from 'react-redux'
 import actions from '../actions'
-import Icon from 'react-native-vector-icons/EvilIcons';
-import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 
 class MetroSearch extends Component {
     constructor(props) {
@@ -29,7 +27,8 @@ class MetroSearch extends Component {
                             inputContainerStyle={styles.searchInput}
                             leftIcon={
                                 <Icon
-                                    name='location'
+                                    name='home'
+                                    type='entypo'
                                     color='#929FAA'
                                     size={20}
                                 />
@@ -53,7 +52,8 @@ class MetroSearch extends Component {
                         <Input
                             leftIcon={
                                 <Icon
-                                    name='location'
+                                    name='target'
+                                    type='material-community'
                                     color='#929FAA'
                                     size={20}
                                 />
@@ -69,11 +69,11 @@ class MetroSearch extends Component {
                     </TouchableOpacity>
                     <View style={styles.buttons}>
                         <Button
-                            title='SEARCH'
+                            title="SEARCH"
                             onPress={() => findShortestPath(origin, destination)}
                             buttonStyle={styles.searchButton}
                             loading={loading}
-                            disabled={!origin || !destination || loading}
+                            disabled={!origin || !destination || loading || (origin===destination)}
                             disabledStyle={ (loading)? styles.searchButton : styles.disabledSearchButton }
                         />
                     </View>
@@ -119,13 +119,15 @@ const styles = StyleSheet.create({
         width: 270,
         height: 50,
         backgroundColor: '#3799CF',
-        margin: 5
+        margin: 5,
+        borderRadius: 30
     },
     disabledSearchButton: {
         width: 270,
         height: 50,
         backgroundColor: '#CBD1D7',
-        margin: 5
+        margin: 5,
+        borderRadius: 30
     },
     searchText: {
         fontSize: 16,

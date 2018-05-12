@@ -18,54 +18,54 @@ class MetroResult extends Component {
             transfersCount,
             itinerary } = shortestPath
 
-        /* 
-            const linesList = itinerary.map((itineraryPart) => {
-                const stationsList = itineraryPart.stationsNames.map((stationName) =>
-                    <List.Item><Icon name='angle down' />{ stationName }</List.Item>);
-                return (
-                    <Container>
-                        <Header size='small' dividing textAlign='center'>
-                            <Icon name='subway' />{itineraryPart.line}
-                        </Header>
-                        <List>
-                            { stationsList }
-                        </List>
-                    </Container>
-                );
-            });
-        */
-
         const stationsCountStr = (stationsCount > 1) ? `${stationsCount} stops` : `${stationsCount} stop`
         const transfersCountStr = (transfersCount > 1) ? `${transfersCount} connections` : `${transfersCount} connection`
+
+        const linesCard = itinerary.map((itineraryPart, i) => {
+            const stationsList = itineraryPart.stationsNames.map((stationName, j) =>
+                <ListItem
+                    key={j}
+                    title={stationName}
+                    leftIcon={{ name: 'location-on', 
+                                type: 'material', 
+                                color: '#929FAA'
+                             }}
+                    containerStyle={styles.containerStyle}
+                />)
+            return (<Card title={itineraryPart.line} key={i}>
+                        <View style={styles.linesCard}>
+                            {stationsList}
+                        </View>
+                    </Card>)
+        })
 
         return (
             <ScrollView style={styles.container}>
                 <Card>
                     <View style={styles.infoCard}>
-                        <Text style={{ flex: 1, textAlign: 'left' }}>{stationsCountStr}</Text>
-                        <Text style={{ flex: 1, textAlign: 'right' }}>{transfersCountStr}</Text>
+                        <Text style={{ flex: 1, textAlign: 'left', fontWeight: 'bold'}}>{stationsCountStr}</Text>
+                        <Text style={{ flex: 1, textAlign: 'right', fontWeight: 'bold'}}>{transfersCountStr}</Text>
                     </View>
                 </Card>
                 <Card>
                     <View style={styles.endPointsCard}>
-                        <Text style={{ flex: 1, textAlign: 'center' }}>{departureStationName}</Text>
+                        <Icon
+                            name='home'
+                            type='entypo'
+                            color='#929FAA'
+                        />
+                    <Text style={styles.endPointsText}>{departureStationName}</Text>
                     </View>
                 </Card>
-                {itinerary.map((itineraryPart) => {
-                    <Card title={itineraryPart.line}>
-                        <View style={styles.endPointsCard}>
-                            {itineraryPart.stationsNames.map((stationName, i) => {
-                                <ListItem
-                                    key={i}
-                                    title={stationName}
-                                />
-                            })}
-                        </View>
-                    </Card>
-                })}
-                <Card>
+                { linesCard }
+                <Card containerStyle={{ marginBottom: 20 }}>
                     <View style={styles.endPointsCard}>
-                        <Text style={{ flex: 1, textAlign: 'center' }}>{arrivalStationName}</Text>
+                        <Icon
+                                name='target'
+                                type='material-community'
+                                color='#929FAA'
+                        />
+                        <Text style={styles.endPointsText}>{arrivalStationName}</Text>
                     </View>
                 </Card>
             </ScrollView>
@@ -84,15 +84,26 @@ const styles = StyleSheet.create({
     },
     endPointsCard: {
         flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    endPointsText: {
+        marginLeft: 10,
+        fontWeight: 'bold',
+        fontSize: 18
     },
     linesCard: {
-        flex: 1,
+        flex: 1
+    },
+    containerStyle: {
+        padding:2
     }
 })
 
 const mapStateToProps = (state) => {
     const { shortestPath } = state.result
-    return { shortestPath, origin, destination }
+    return { shortestPath }
 }
 
 export default connect(mapStateToProps, actions)(MetroResult)
