@@ -20,6 +20,8 @@ class MetroResult extends Component {
 
         const stationsCountStr = (stationsCount > 1) ? `${stationsCount} stops` : `${stationsCount} stop`
         const transfersCountStr = (transfersCount > 1) ? `${transfersCount} connections` : `${transfersCount} connection`
+        const weight = stationsCount + 3 * transfersCount
+        const weightStr = `Weight = ${stationsCount} + 3 x ${transfersCount} = ${weight}`
 
         const linesCard = itinerary.map((itineraryPart, i) => {
             const stationsList = itineraryPart.stationsNames.map((stationName, j) =>
@@ -45,6 +47,9 @@ class MetroResult extends Component {
                     <View style={styles.infoCard}>
                         <Text style={{ flex: 1, textAlign: 'left', fontWeight: 'bold'}}>{stationsCountStr}</Text>
                         <Text style={{ flex: 1, textAlign: 'right', fontWeight: 'bold'}}>{transfersCountStr}</Text>
+                    </View>
+                    <View style={styles.infoWeightCard}>
+                        <Text style={{ flex: 1 }}>{weightStr}</Text>
                     </View>
                 </Card>
                 <Card>
@@ -81,6 +86,9 @@ const styles = StyleSheet.create({
     infoCard: {
         flex: 1,
         flexDirection: 'row'
+    },
+    infoWeightCard: {
+        flex: 1
     },
     endPointsCard: {
         flex: 1,

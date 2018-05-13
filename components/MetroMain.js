@@ -28,16 +28,17 @@ class MetroMain extends Component {
     render() {
         const { page, loading } = this.props
 
+        const backButton = (page !== "search") ? 
+            (<Icon
+            name='arrow-back'
+            color='#ffffff'
+            onPress={() => { !loading && this.goHome() }}
+            />) : null
+
         return (<View style={styles.container}>
             <Header
                 centerComponent={{ text: 'Paris Metro Dijkstra\'s Path', style: styles.headerText }}
-                rightComponent={
-                    <Icon
-                        name='home'
-                        color='#ffffff'
-                        onPress={() => { !loading && this.goHome() }}
-                    />
-                }
+                leftComponent={ backButton }
                 outerContainerStyles={ styles.header }
             />
             {page === "search" && <MetroSearch />}
